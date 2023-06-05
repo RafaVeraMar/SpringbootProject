@@ -1,9 +1,6 @@
 package babel.rafavera.SpringbootProject.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -19,7 +16,8 @@ public class Documento {
     private String ruta;
     private String descripcion;
     private String palabrasClave;
-
-    private Integer idEditorial;
+    @ManyToOne
+    @JoinColumn(name="id_editorial", insertable = true, updatable = true)
+    private Editorial editorial;
 
 }
