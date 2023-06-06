@@ -1,6 +1,7 @@
 package babel.rafavera.SpringbootProject.web.rest;
 
 
+import babel.rafavera.SpringbootProject.Facades.DocumentoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,7 @@ public class DocumentosController {
     private DocumentoFacade facade;
 
     @Autowired
-    public DocumentsController(DocumentoFacade facade) {
+    public DocumentosController(DocumentoFacade facade) {
         this.facade=facade;
 
     }
