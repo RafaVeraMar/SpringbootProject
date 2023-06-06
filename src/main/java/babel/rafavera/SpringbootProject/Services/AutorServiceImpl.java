@@ -1,11 +1,14 @@
 package babel.rafavera.SpringbootProject.Services;
 
 import babel.rafavera.SpringbootProject.Models.Autor;
+import babel.rafavera.SpringbootProject.Respository.AutorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class AutorServiceImpl implements AutorService{
 
+private AutorRepository repository;
 
     @Override
     public List<Autor> getAutores() {

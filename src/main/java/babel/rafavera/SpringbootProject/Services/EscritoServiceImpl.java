@@ -1,9 +1,10 @@
 package babel.rafavera.SpringbootProject.Services;
 
 import babel.rafavera.SpringbootProject.Models.Escrito;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
 
+@Service
 public class EscritoServiceImpl implements EscritoService{
 
 
