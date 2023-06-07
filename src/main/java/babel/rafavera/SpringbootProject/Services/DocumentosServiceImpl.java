@@ -39,6 +39,14 @@ public class DocumentosServiceImpl implements DocumentosService {
 
     }
 
+    /**
+     *
+     * @param id
+     * @param doc
+     * @return
+     * The first If checks the obtained Document id is null. This check is neccessary because of the logic defined into
+     * the method getDocumento.
+     */
     @Override
     public Documento editDocumento(Integer id, Documento doc) {
 
