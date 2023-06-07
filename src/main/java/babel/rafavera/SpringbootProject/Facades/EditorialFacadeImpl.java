@@ -1,5 +1,6 @@
 package babel.rafavera.SpringbootProject.Facades;
 
+import babel.rafavera.SpringbootProject.Mappers.EditorialMapper;
 import babel.rafavera.SpringbootProject.Models.Editorial;
 import babel.rafavera.SpringbootProject.Services.EditorialService;
 import babel.rafavera.SpringbootProject.web.dto.request.EditorialRequest;
