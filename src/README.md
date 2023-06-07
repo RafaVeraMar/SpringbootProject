@@ -1,8 +1,8 @@
 # SpringbootProject
-Consist in a Library management application.
+Consist in a Books information management app
 
 ## Tutorial Development
-This project has been developed through a tutorial, guided by a __Alejandro Mata Martínez__
+This project has been developed through a tutorial, by the hand of __Alejandro Mata Martínez__
 It belongs to the first part of two tutorial series.
 In the second one we will manage Exceptions and much more about Facade layer and Mappers.
 

@@ -43,9 +43,10 @@ public class DocumentosServiceImpl implements DocumentosService {
      *
      * @param id
      * @param doc
-     * @return
-     * The first If checks the obtained Document id is null. This check is neccessary because of the logic defined into
+     * @return the document with the information received from the request
+     * The first If checks the obtained Document id is null. This check is necessary because of the logic defined into
      * the method getDocumento.
+     * This method modifies any Document attribute together or individually.
      */
     @Override
     public Documento editDocumento(Integer id, Documento doc) {
@@ -80,7 +81,13 @@ public class DocumentosServiceImpl implements DocumentosService {
 
     }
 
-
+    /**
+     *
+     * @param id
+     * @return
+     * Exceptions are not yet handled so we need to define something to return. In this case the empty document
+     * This method checks if the given Document id exists, then all the attributes are deleted (through deleteById method from CrudRepository class)
+     **/
     @Override
     public Documento deleteDocumento(Integer id) {
 
