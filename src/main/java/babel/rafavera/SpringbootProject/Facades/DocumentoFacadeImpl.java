@@ -1,14 +1,19 @@
 package babel.rafavera.SpringbootProject.Facades;
 
 import babel.rafavera.SpringbootProject.Mappers.DocumentoMapper;
+import babel.rafavera.SpringbootProject.Models.Autor;
 import babel.rafavera.SpringbootProject.Models.Documento;
+import babel.rafavera.SpringbootProject.Models.Editorial;
 import babel.rafavera.SpringbootProject.Services.AutorService;
 import babel.rafavera.SpringbootProject.Services.DocumentosService;
+import babel.rafavera.SpringbootProject.Services.EditorialService;
+import babel.rafavera.SpringbootProject.Services.EscritoService;
 import babel.rafavera.SpringbootProject.web.dto.request.DocumentoRequest;
 import babel.rafavera.SpringbootProject.web.dto.response.DocumentoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -18,11 +23,15 @@ public class DocumentoFacadeImpl implements DocumentoFacade{
 
     private DocumentosService docService;
     private AutorService autorService;
+    private EditorialService editorialService;
+    private EscritoService escritoService;
     private DocumentoMapper docMapper;
     @Autowired
-    public DocumentoFacadeImpl(DocumentosService docService, AutorService autorService, DocumentoMapper docMapper) {
+    public DocumentoFacadeImpl(DocumentosService docService, AutorService autorService, EditorialService editorialService, EscritoService escritoService, DocumentoMapper docMapper) {
         this.docService = docService;
+        this.editorialService = editorialService;
         this.autorService = autorService;
+        this.escritoService = escritoService;
         this.docMapper = docMapper;
     }
 
@@ -36,12 +45,24 @@ public class DocumentoFacadeImpl implements DocumentoFacade{
 
     @Override
     public DocumentoResponse obtenerDocumento(Integer id) {
-        return null;
+        final Documento documento = docService.getDocumento(id);
+        return docMapper.toDtoResp(documento,autorService.getAutoresByDocumento(id));
     }
 
     @Override
     public DocumentoResponse crearDocumento(DocumentoRequest documentoRequest) {
-        return null;
+        final Editorial editorial = editorialService.getEditorial(documentoRequest.getEditorial());
+        final Documento documento = docService.createDocumento(docMapper.toEntity(documentoRequest,editorial));
+
+        final List<Autor> autores = new ArrayList<>();
+        documentoRequest.getAutores().forEach(id -> {
+            final Autor autor = autorService.getAutor(id);
+            if (autor.getId()!=null) {
+                escritoService.createEscrito(documento.getId(),autor.getId());
+                autores.add(autor);
+            }
+        });
+        return docMapper.toDtoResp(documento,autores);
     }
 
     @Override
