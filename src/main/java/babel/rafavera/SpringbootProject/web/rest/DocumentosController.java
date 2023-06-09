@@ -2,6 +2,7 @@ package babel.rafavera.SpringbootProject.web.rest;
 
 
 import babel.rafavera.SpringbootProject.Facades.DocumentoFacade;
+import babel.rafavera.SpringbootProject.Models.Documento;
 import babel.rafavera.SpringbootProject.web.dto.request.DocumentoRequest;
 import babel.rafavera.SpringbootProject.web.dto.response.DocumentoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,18 @@ public class DocumentosController {
         return new ResponseEntity<DocumentoResponse>(documento, HttpStatus.OK);
     }
 
-    // TODO: editar atributos de un documento
-    // TODO: eliminar un documento
+    @PatchMapping("/{idDocumento}")
+    public ResponseEntity<DocumentoResponse> editarDocumento(@PathVariable Integer idDocumento,@RequestBody DocumentoRequest body) {
+        final DocumentoResponse documento = facade.editarDocumento(idDocumento, body);
+        return new ResponseEntity<DocumentoResponse>(documento, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{idDocumento}")
+    public ResponseEntity<DocumentoResponse> eliminarDocumento(@PathVariable Integer idDocumento) {
+        final DocumentoResponse documento = facade.eliminarDocumento(idDocumento);
+        return new ResponseEntity<DocumentoResponse>(documento, HttpStatus.OK);
+
+    }
+
 
 }

@@ -16,7 +16,10 @@ public class DocumentoMapperImpl implements DocumentoMapper {
     @Override
     public DocumentoResponse toDtoResp(Documento doc, List<Autor> autores) {
         final List<String> autoresStr = new ArrayList<>();
-        autores.forEach(autor -> autoresStr.add(autor.getNombre()));
+        if (autores != null) {
+            autores.forEach(autor -> autoresStr.add(autor.getNombre()));
+        }
+
         return DocumentoResponse.builder()
                 .id(doc.getId())
                 .titulo(doc.getTitulo())
@@ -30,6 +33,7 @@ public class DocumentoMapperImpl implements DocumentoMapper {
                 .autores(autoresStr)
                 .build();
     }
+
 
     @Override
     public Documento toEntity(DocumentoResponse doc) {

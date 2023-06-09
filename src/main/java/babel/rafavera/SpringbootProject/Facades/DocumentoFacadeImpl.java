@@ -12,6 +12,8 @@ import babel.rafavera.SpringbootProject.web.dto.request.DocumentoRequest;
 import babel.rafavera.SpringbootProject.web.dto.response.DocumentoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,11 +69,33 @@ public class DocumentoFacadeImpl implements DocumentoFacade{
 
     @Override
     public DocumentoResponse editarDocumento(Integer id, DocumentoRequest documentoRequest) {
-        return null;
+
+        final Editorial editorial = editorialService.getEditorial(documentoRequest.getEditorial());
+        final Documento documento = docService.editDocumento(id, docMapper.toEntity(documentoRequest,editorial));
+
+        final List<Autor> autores = new ArrayList<>();
+        if (documento.getId() != null) {
+            List<Integer> autoresIds = documentoRequest.getAutores();
+            if (!CollectionUtils.isEmpty(autoresIds)) {
+                autoresIds.forEach(autorid -> {
+                    final Autor autor = autorService.getAutor(autorid);
+                    if (autor.getId() != null) {
+                        escritoService.createEscrito(documento.getId(), autor.getId());
+                        autores.add(autor);
+                    }
+                });
+            } else {
+                autores.addAll(autorService.getAutoresByDocumento(id));
+            }
+        }
+        return docMapper.toDtoResp(documento, autores);
     }
 
     @Override
     public DocumentoResponse eliminarDocumento(Integer id) {
-        return null;
+        final List<Autor> autores = autorService.getAutoresByDocumento(id);
+        final Documento doc = docService.deleteDocumento(id);
+        return docMapper.toDtoResp(doc,null);
+
     }
 }
