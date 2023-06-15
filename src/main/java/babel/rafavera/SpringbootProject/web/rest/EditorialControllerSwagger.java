@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@Tag(name="Documentos", description= "Administración para la entidad Editorial")
+@Tag(name="2. Editoral", description= "Administración para la entidad Editorial")
 public interface EditorialControllerSwagger {
 
     @Operation(summary = "Obtener el listado de Editoriales", operationId = "getEditoriales")

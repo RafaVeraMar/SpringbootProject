@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@Tag(name="Documentos", description= "Administración para la entidad Documentos")
+@Tag(name="3. Documentos", description= "Administración para la entidad Documentos")
 public interface DocumentosControllerSwagger {
 
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/biblioteca/editoriales")
-public class EditorialController {
+public class EditorialController implements EditorialControllerSwagger{
 
     private EditorialFacade facade;
 

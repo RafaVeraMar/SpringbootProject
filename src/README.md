@@ -33,8 +33,17 @@ The dependencies we will use for starting our project are:
 ## API REST Routes
 The routes of our REST API should fulfill the following requirements:
 
-- Retrieve a list of all documents.
-- Retrieve a specific document by its identifier.
-- Create a new document.
-- Edit attributes of a specific document.
-- Delete a document.
+- Retrieve a list of all (x):
+  
+- Retrieve a specific (x) by its identifier.
+- Create a new (x).
+- Edit attributes of a specific (x).
+- Delete a/an (x).
+
+      x =
+      Autores ||
+      Editorial ||
+      Documentos 
+
+## SWAGGER INDEX / API DOCs
+http://localhost:8080/swagger-ui/index.html#/

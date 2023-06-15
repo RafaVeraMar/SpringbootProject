@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@Tag(name = "Autores", description = "Administracion para la entidad Autor")
+@Tag(name = "1. Autores", description = "Administracion para la entidad Autor")
 public interface AutorControllerSwagger {
 
     @Operation(summary = "Obtener listado de Autores")
