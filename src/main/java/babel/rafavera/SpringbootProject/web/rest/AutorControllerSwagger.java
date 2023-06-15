@@ -40,7 +40,7 @@ public interface AutorControllerSwagger {
     })
     ResponseEntity<AutorResponse> editarAutor(Integer idAutor, AutorRequest body);
 
-    @Operation(summary = "Crear un nuevo Auto")
+    @Operation(summary = "Crear un nuevo Autor")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,

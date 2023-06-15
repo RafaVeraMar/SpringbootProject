@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/biblioteca/documentos")
-public class DocumentosController {
+public class DocumentosController implements DocumentosControllerSwagger{
     private DocumentoFacade facade;
 
     @Autowired
