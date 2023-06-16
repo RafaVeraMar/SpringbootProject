@@ -1,9 +1,12 @@
 package babel.rafavera.SpringbootProject.Models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Documento {
     @Id
