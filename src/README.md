@@ -47,3 +47,8 @@ The routes of our REST API should fulfill the following requirements:
 
 ## SWAGGER INDEX / API DOCs
 http://localhost:8080/swagger-ui/index.html#/
+
+
+![](/src/main/resources/images/swaggerDoc.png)
+
+![](C:\Users\rafael.vera\Documents\SpringbootProject\src\main\resources\images\swaggerDoc.png)
