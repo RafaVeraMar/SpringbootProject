@@ -1,10 +1,11 @@
 package babel.rafavera.SpringbootProject.web.dto.request;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
-@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class AutorRequest {
     private String nombre;
 }

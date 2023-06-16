@@ -1,11 +1,13 @@
 package babel.rafavera.SpringbootProject.web.dto.request;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+
 import java.util.List;
 
-@Data
-@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class DocumentoRequest {
 
