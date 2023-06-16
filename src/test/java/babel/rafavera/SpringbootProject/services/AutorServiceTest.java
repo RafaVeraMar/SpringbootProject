@@ -15,11 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+
+import static java.nio.file.Files.delete;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+
 
 @ExtendWith(MockitoExtension.class)
 public class AutorServiceTest {
@@ -78,9 +82,51 @@ public class AutorServiceTest {
         assertEquals("Autor", a.getNombre());
     }
 
+    @Test
+    public void editAutorTest() {
 
-    // TODO test de editAutor, Delete
-    // TODO en editar y borrar añadir un test que comprueba que la id autor no exista o sea null
+        when(repository.findById(1)).thenReturn(Optional.of(autor));
+        when(repository.save(any(Autor.class))).thenReturn(autor);
+
+
+        Autor result = service.editAutor(1, "Rafa");
+
+
+        assertEquals(1, result.getId());
+        assertEquals("Rafa", result.getNombre());
+    }
+
+    @Test
+    public void editAutorNotFoundTest() {
+        when(repository.findById(2)).thenReturn(Optional.empty());
+
+        Autor result = service.editAutor(2, "Rafa");
+
+        assertNull(result.getId());
+        assertNull(result.getNombre());
+
+        verify(repository, never()).save(any(Autor.class));
+    }
+
+    @Test
+    public void deleteAutorTest(){
+        when(repository.findById(1)).thenReturn(Optional.of(autor));
+        Autor result = service.deleteAutor(1);
+
+        assertEquals(autor, result); //
+
+        verify(repository, times(1)).delete(autor);
+    }
+
+    @Test
+    public void deleteAutorNotFoundTest() {
+        when(repository.findById(2)).thenReturn(Optional.empty());
+        Autor result = service.deleteAutor(2);
+
+        assertNotEquals(autor,result); //
+
+        verify(repository,never()).delete(autor);
+    }
 
 
 
