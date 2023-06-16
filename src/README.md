@@ -48,4 +48,4 @@ The routes of our REST API should fulfill the following requirements:
 ## SWAGGER INDEX / API DOCs
 http://localhost:8080/swagger-ui/index.html#/
 
-![](/images/swaggerDoc.png)
+![](//src/main/resources/static/images/swaggerDoc.png)
